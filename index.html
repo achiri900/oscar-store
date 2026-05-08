@@ -1,238 +1,296 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- ==========================================
+         META INFORMATION & OPTIMIZATION
+         ========================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="OSCAR STORE - متجر متخصص في الملابس الرجالية العصرية في جرف الملحة">
     <meta name="keywords" content="ملابس رجالية، موضة، جرف الملحة">
     <meta name="author" content="OSCAR STORE">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- ==========================================
+         TITLE & ICONS
+         ========================================== -->
     <title>OSCAR STORE - الملابس الرجالية العصرية</title>
+    
+    <!-- ==========================================
+         STYLESHEETS
+         ========================================== -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
+    <!-- ==========================================
+         ACCESSIBILITY: SKIP TO MAIN
+         ========================================== -->
+    <a href="#main-content" class="skip-link">اذهب إلى المحتوى الرئيسي</a>
+
+    <!-- ==========================================
+         NAVIGATION BAR
+         ========================================== -->
+    <nav role="navigation" aria-label="الملاحة الرئيسية" class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
-                <span class="logo-icon">✦</span>
+                <span class="logo-icon">👔</span>
                 <span class="logo-text">OSCAR STORE</span>
             </div>
             
-            <!-- Hamburger Menu Button -->
-            <button class="hamburger-menu" id="hamburgerMenu" aria-label="فتح القائمة" aria-expanded="false">
+            <!-- Hamburger Menu for Mobile -->
+            <button 
+                class="hamburger-menu" 
+                id="hamburgerMenu" 
+                aria-label="فتح القائمة" 
+                aria-expanded="false"
+                aria-controls="navMenu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
-            
-            <!-- Navigation Links -->
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">الرئيسية</a></li>
-                <li><a href="#products" class="nav-link">المنتجات</a></li>
-                <li><a href="#about" class="nav-link">من نحن</a></li>
-                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu" role="menu">
+                <li role="none">
+                    <a href="#home" class="nav-link" role="menuitem">الرئيسية</a>
+                </li>
+                <li role="none">
+                    <a href="#products" class="nav-link" role="menuitem">المنتجات</a>
+                </li>
+                <li role="none">
+                    <a href="#about" class="nav-link" role="menuitem">من نحن</a>
+                </li>
+                <li role="none">
+                    <a href="#contact" class="nav-link" role="menuitem">تواصل معنا</a>
+                </li>
             </ul>
+
+            <!-- Shopping Cart -->
+            <div class="cart-preview">
+                <button 
+                    class="cart-btn" 
+                    id="cartBtn" 
+                    aria-label="عرض السلة"
+                    aria-expanded="false"
+                    aria-controls="cartDropdown">
+                    🛒
+                    <span class="cart-count" id="cartCount" aria-label="عدد المنتجات في السلة">0</span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" role="banner">
-        <div class="hero-content">
-            <h1 class="hero-title">OSCAR STORE</h1>
-            <p class="hero-subtitle">أسلوبك، هويتك، فخرك</p>
-            <p class="hero-description">اكتشف مجموعة فاخرة من الملابس الرجالية العصرية</p>
-            <button class="cta-btn" aria-label="استكشف المنتجات">
-                <span>استكشف المنتجات</span>
-                <span class="arrow">→</span>
-            </button>
+    <!-- Cart Dropdown -->
+    <div class="cart-dropdown" id="cartDropdown" hidden aria-label="محتويات السلة">
+        <div class="cart-list" id="cartList">
+            <p style="text-align: center; color: #999;">السلة فارغة</p>
         </div>
-        <div class="hero-background">
-            <div class="geometric-shape shape-1"></div>
-            <div class="geometric-shape shape-2"></div>
-            <div class="geometric-shape shape-3"></div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="products-section">
-        <div class="section-container">
-            <h2 class="section-title">مجموعة المنتجات</h2>
-            <p class="section-subtitle">اختر من تشكيلة واسعة من الملابس العصرية</p>
-            
-            <!-- Category Filter -->
-            <div class="category-filter" role="group" aria-label="تصفية المنتجات حسب الفئة">
-                <button class="filter-btn active" data-filter="all">جميع المنتجات</button>
-                <button class="filter-btn" data-filter="shirts">قمصان</button>
-                <button class="filter-btn" data-filter="pants">بناطيل</button>
-                <button class="filter-btn" data-filter="jackets">جاكيتات</button>
-                <button class="filter-btn" data-filter="accessories">إكسسوارات</button>
-            </div>
-
-            <!-- Products Grid -->
-            <div class="products-grid" id="productsGrid">
-                <!-- Product cards will be generated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="section-container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">من نحن</h2>
-                    <p class="about-description">
-                        OSCAR STORE هو متخصص رائد في الملابس الرجالية العصرية بمدينة جرف الملحة. 
-                        منذ تأسيسنا، التزمنا بتقديم أعلى جودة من الملابس التي تجمع بين الأناقة والراحة.
-                    </p>
-                    <p class="about-description">
-                        نؤمن أن كل رجل يستحق أن يظهر بأفضل صورة. لذلك، نختار كل قطعة بعناية من أفضل 
-                        الموردين لضمان رضاك التام وولاءك لعلامتنا التجارية.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">منتج</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">2000+</span>
-                            <span class="stat-label">عميل راضِ</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">5 سنوات</span>
-                            <span class="stat-label">خبرة</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <rect width="400" height="400" fill="#d4af37" opacity="0.1"/>
-                            <circle cx="200" cy="100" r="50" fill="#d4af37" opacity="0.3"/>
-                            <rect x="150" y="160" width="100" height="120" fill="#d4af37" opacity="0.3"/>
-                            <path d="M 150 280 Q 200 300 250 280" stroke="#d4af37" stroke-width="3" fill="none" opacity="0.3"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-container">
-            <h2 class="section-title">تواصل معنا</h2>
-            
-            <div class="contact-content">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <div class="info-card">
-                        <div class="info-icon">📞</div>
-                        <h3>رقم الهاتف</h3>
-                        <a href="tel:+201234567890" class="info-link">+20 123 456 7890</a>
-                        <p class="info-subtitle">اتصل بنا من الساعة 9 صباحاً إلى 6 مساءً</p>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-icon">📍</div>
-                        <h3>العنوان</h3>
-                        <p class="info-text">شارع النيل، جرف الملحة</p>
-                        <p class="info-text">محافظة القاهرة</p>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="info-icon">✉️</div>
-                        <h3>البريد الإلكتروني</h3>
-                        <a href="mailto:info@oscarstore.com" class="info-link">info@oscarstore.com</a>
-                        <p class="info-subtitle">سنرد عليك في أقرب وقت</p>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <form class="contact-form" id="contactForm" novalidate>
-                    <div class="form-group">
-                        <label for="name">الاسم الكامل *</label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="أدخل اسمك الكامل"
-                            required
-                            aria-required="true"
-                        >
-                        <span class="error-message" id="nameError"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">البريد الإلكتروني *</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            placeholder="example@gmail.com"
-                            required
-                            aria-required="true"
-                        >
-                        <span class="error-message" id="emailError"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">الموضوع *</label>
-                        <input 
-                            type="text" 
-                            id="subject" 
-                            name="subject" 
-                            placeholder="ما موضوع رسالتك؟"
-                            required
-                            aria-required="true"
-                        >
-                        <span class="error-message" id="subjectError"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">الرسالة *</label>
-                        <textarea 
-                            id="message" 
-                            name="message" 
-                            placeholder="اكتب رسالتك هنا..."
-                            rows="5"
-                            required
-                            aria-required="true"
-                        ></textarea>
-                        <span class="error-message" id="messageError"></span>
-                    </div>
-
-                    <button type="submit" class="submit-btn">إرسال الرسالة</button>
-                    <div class="form-message" id="formMessage"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shopping Cart Preview (Floating) -->
-    <div class="cart-preview" id="cartPreview">
-        <button class="cart-btn" id="cartBtn" aria-label="عرض السلة">
-            <span class="cart-icon">🛒</span>
-            <span class="cart-count" id="cartCount">0</span>
-        </button>
-        <div class="cart-dropdown" id="cartDropdown" hidden>
-            <div class="cart-list" id="cartList"></div>
-            <div class="cart-total">
-                <strong id="cartTotal">0 ج.م</strong>
-            </div>
-            <button class="checkout-btn">الدفع</button>
-        </div>
+        <div class="cart-total">الإجمالي: <span id="cartTotal">0 ج.م</span></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <main id="main-content">
+        
+        <!-- HERO SECTION -->
+        <section id="home" class="hero" role="banner" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title">أسلوبك، هويتك، فخرك</h1>
+                <p class="hero-subtitle">اكتشف مجموعة فاخرة من الملابس الرجالية العصرية</p>
+                <button class="cta-btn" aria-label="تصفح المنتجات">استكشف المنتجات</button>
+            </div>
+            <div class="hero-background">
+                <div class="geometric-shape shape-1"></div>
+                <div class="geometric-shape shape-2"></div>
+                <div class="geometric-shape shape-3"></div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <section id="products" class="products-section" aria-labelledby="products-title">
+            <div class="section-container">
+                <h2 id="products-title" class="section-title">مجموعة المنتجات</h2>
+                <p class="section-subtitle">اختر من تشكيلة واسعة من الملابس العصرية</p>
+
+                <!-- Category Filter -->
+                <div class="category-filter" role="group" aria-label="تصفية المنتجات حسب الفئة">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">جميع المنتجات</button>
+                    <button class="filter-btn" data-filter="shirts" aria-pressed="false">قمصان</button>
+                    <button class="filter-btn" data-filter="pants" aria-pressed="false">بناطيل</button>
+                    <button class="filter-btn" data-filter="jackets" aria-pressed="false">جاكيتات</button>
+                    <button class="filter-btn" data-filter="accessories" aria-pressed="false">إكسسو��رات</button>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productsGrid" class="products-grid" role="grid" aria-label="شبكة المنتجات">
+                    <!-- Products will be dynamically inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section" aria-labelledby="about-title">
+            <div class="section-container">
+                <h2 id="about-title" class="section-title">من نحن</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="about-description">
+                            OSCAR STORE هو متخصص رائد في الملابس الرجالية العصرية بمدينة جرف الملحة. 
+                            منذ تأسيسنا، التزمنا بتقديم أعلى جودة من الملابس التي تجمع بين الأناقة والراحة.
+                        </p>
+                        <p class="about-description">
+                            نؤمن أن كل رجل يستحق أن يظهر بأفضل صورة. لذلك، نختار كل قطعة بعناية من أفضل 
+                            الموردين لضمان رضاك التام وولاءك لعلامتنا التجارية.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">منتج</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">2000+</span>
+                                <span class="stat-label">عميل راضِ</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">5 سنوات</span>
+                                <span class="stat-label">خبرة</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-placeholder" aria-label="شعار متجر OSCAR">
+                            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="400" height="400" fill="#d4af37" opacity="0.1"/>
+                                <circle cx="200" cy="100" r="50" fill="#d4af37" opacity="0.3"/>
+                                <rect x="150" y="160" width="100" height="120" fill="#d4af37" opacity="0.3"/>
+                                <path d="M 150 280 Q 200 300 250 280" stroke="#d4af37" stroke-width="3" fill="none" opacity="0.3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section" aria-labelledby="contact-title">
+            <div class="section-container">
+                <h2 id="contact-title" class="section-title">تواصل معنا</h2>
+                
+                <div class="contact-content">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <h3>رقم الهاتف</h3>
+                            <p>
+                                <a href="tel:+9660123456789" class="info-link">+966 01 2345 6789</a>
+                            </p>
+                            <p class="info-subtitle">متاح من الأحد إلى الخميس، 9 ص - 9 م</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <h3>العنوان</h3>
+                            <p class="info-text">شارع الملك عبدالعزيز</p>
+                            <p class="info-text">مدينة جرف الملحة</p>
+                            <p class="info-text">المملكة العربية السعودية</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">✉️</div>
+                            <h3>البريد الإلكتروني</h3>
+                            <p>
+                                <a href="mailto:info@oscarstore.sa" class="info-link">info@oscarstore.sa</a>
+                            </p>
+                            <p class="info-subtitle">سنرد عليك في أقرب وقت</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form class="contact-form" id="contactForm" novalidate aria-labelledby="contact-form-title">
+                        <h3 id="contact-form-title" style="color: var(--primary-color); margin-bottom: 1.5rem;">أرسل لنا رسالة</h3>
+
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="أدخل اسمك الكامل"
+                                required
+                                aria-required="true">
+                            <span class="error-message" id="nameError" role="alert"></span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="example@gmail.com"
+                                required
+                                aria-required="true">
+                            <span class="error-message" id="emailError" role="alert"></span>
+                        </div>
+
+                        <!-- Subject Field -->
+                        <div class="form-group">
+                            <label for="subject">الموضوع *</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                placeholder="ما موضوع رسالتك؟"
+                                required
+                                aria-required="true">
+                            <span class="error-message" id="subjectError" role="alert"></span>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="form-group">
+                            <label for="message">الرسالة *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                placeholder="اكتب رسالتك هنا..."
+                                rows="5"
+                                required
+                                aria-required="true"></textarea>
+                            <span class="error-message" id="messageError" role="alert"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-btn" aria-label="إرسال الرسالة">
+                            إرسال الرسالة
+                        </button>
+
+                        <!-- Form Message -->
+                        <div class="form-message" id="formMessage" role="alert"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer role="contentinfo" class="footer">
         <div class="section-container">
             <div class="footer-content">
+                <!-- About Footer -->
                 <div class="footer-section">
-                    <h4>OSCAR STORE</h4>
+                    <h4>👔 OSCAR STORE</h4>
                     <p>متخصصون في الملابس الرجالية العصرية في جرف الملحة</p>
                 </div>
 
+                <!-- Quick Links -->
                 <div class="footer-section">
                     <h4>روابط سريعة</h4>
                     <ul>
@@ -243,16 +301,18 @@
                     </ul>
                 </div>
 
+                <!-- Social Media -->
                 <div class="footer-section">
                     <h4>تابعنا</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="فيسبوك">f</a>
-                        <a href="#" aria-label="إنستجرام">📷</a>
-                        <a href="#" aria-label="تويتر">𝕏</a>
+                        <a href="https://facebook.com" aria-label="زيارة صفحتنا على فيسبوك">f</a>
+                        <a href="https://instagram.com" aria-label="زيارة صفحتنا على إنستجرام">📷</a>
+                        <a href="https://twitter.com" aria-label="زيارة صفحتنا على تويتر">𝕏</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <p>&copy; 2026 OSCAR STORE. جميع الحقوق محفوظة.</p>
                 <p>طُورت بعناية لتقديم أفضل تجربة تسوق</p>
@@ -260,6 +320,10 @@
         </div>
     </footer>
 
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
     <script src="script.js"></script>
+
 </body>
 </html>
